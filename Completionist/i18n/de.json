@@ -1,0 +1,13 @@
+{
+	// Notification message when a monster needed for the monster slaying goals is killed
+	"monsters.slain": "{{amountSlain}} von {{amountNeeded}} {{monsterName}} getötet",
+
+	// --- Monster names ---
+	"monster.bats": "Fledermäuse",
+	"monster.cave-insects": "Höhleninsekten",
+	"monster.duggies": "Buddler",
+	"monster.dust-sprites": "Staubgeister",
+	"monster.slimes": "Schleime",
+	"monster.skeletons": "Skeletten",
+	"monster.void-spirits": "Schattengeister"
+}

@@ -1,0 +1,13 @@
+{
+	// Notification message when a monster needed for the monster slaying goals is killed
+	"monsters.slain": "{{amountSlain}} de {{amountNeeded}} {{monsterName}} eliminados",
+
+	// --- Monster names ---
+	"monster.bats": "murciélagos",
+	"monster.cave-insects": "insectos de cueva",
+	"monster.duggies": "cavadorines",
+	"monster.dust-sprites": "duendes del polvo",
+	"monster.slimes": "babas",
+	"monster.skeletons": "esqueletos",
+	"monster.void-spirits": "espíritus sombríos"
+}

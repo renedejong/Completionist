@@ -1,0 +1,10 @@
+{
+    "Name": "Completionist",
+    "Author": "Ingwaz",
+    "Version": "0.1.0",
+    "Description": "Adds hints to assist you with reaching achievements",
+    "UniqueID": "Ingwaz.Completionist",
+    "EntryDll": "Completionist.dll",
+    "MinimumApiVersion": "2.10.0",
+    "UpdateKeys": []
+}

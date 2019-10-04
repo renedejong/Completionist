@@ -1,0 +1,1 @@
+This is a dummy file that is checked by the post build process. If it is present, it will try to deploy the mod DLL to the game directory.
