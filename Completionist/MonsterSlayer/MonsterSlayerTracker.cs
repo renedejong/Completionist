@@ -2,7 +2,9 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using StardewModdingAPI.Events;
     using StardewValley;
+    using StardewValley.Monsters;
 
     public class MonsterSlayerTracker
     {
@@ -27,6 +29,11 @@
         public const int MaxNumberOfSkeletons = 50;
         public const int MaxNumberOfVoidSpirits = 150;
 
+        /// <summary>
+        /// Monster slaying goal tracker
+        /// </summary>
+        /// <param name="messaging">the HUD messaging client</param>
+        /// <param name="translator">the translation client</param>
         public MonsterSlayerTracker(Messaging messaging, Babelfish translator)
         {
             this.messaging = messaging;
@@ -34,6 +41,7 @@
 
             Count = GetCount();
 
+            // Initialize a local dictionary with translated monster names
             monsterNames = new Dictionary<string, string>
             {
                 ["bats"] = translator.Bats,
@@ -46,9 +54,28 @@
             };
         }
 
+        /// <summary>
+        /// Gets or sets the amount of monsters slain by kind
+        /// </summary>
         public SlayerCount Count { get; set; }
 
-        public void MonstersSlain()
+        /// <summary>
+        /// Check if any NPCs were removed that are classified as monster, if there are, update the kill count statistics
+        /// </summary>
+        /// <param name="e">the event data</param>
+        public void OnNpcListChanged(NpcListChangedEventArgs e)
+        {
+            if (e.Removed.Any(n => n is Monster))
+            {
+                CheckForSlainMonsters();
+            }
+        }
+
+        /// <summary>
+        /// Query the game stats for the kill counts of the monster slaying goals.
+        /// Displays a message if the player gained a kill towards a goal.
+        /// </summary>
+        public void CheckForSlainMonsters()
         {
             var newCount = GetCount();
 
@@ -58,6 +85,7 @@
                 // Only add a line if the amount of monsters slain differs, and doesn't exceed the monster slayer goal yet
                 if (oldAmount < newAmount && oldAmount < max)
                 {
+                    // Show an on-screen message, along the lines of "killed <x> of <y> <monster>"
                     messaging.ShowMessage(translator.NumberOfMonstersSlain(newAmount, max, monsterNames[name]), name);
                 }
             }

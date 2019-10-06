@@ -1,10 +1,8 @@
 ﻿namespace Completionist
 {
-    using System.Linq;
     using Completionist.MonsterSlayer;
     using StardewModdingAPI;
     using StardewModdingAPI.Events;
-    using StardewValley.Monsters;
 
     public class CompletionistMod : Mod
     {
@@ -28,9 +26,9 @@
         /// <param name="e"></param>
         private void World_NpcListChanged(object sender, NpcListChangedEventArgs e)
         {
-            if (Context.IsWorldReady &&  e.Removed.Where(n => n is Monster)?.Count() > 0)
+            if (Context.IsWorldReady)
             {
-                killTracker.MonstersSlain();
+                killTracker.OnNpcListChanged(e);
             }
         }
 
