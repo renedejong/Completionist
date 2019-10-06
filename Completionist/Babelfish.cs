@@ -14,7 +14,7 @@
             this.translator = translator;
         }
 
-        public Translation NumberOfMonstersSlain(int amountSlain, int amountNeeded, string monsterName) => translator.Get("monsters.slain", (amountSlain, amountNeeded, monsterName));
+        public Translation NumberOfMonstersSlain(int amountSlain, int amountNeeded, string monsterName) => translator.Get("monsters.slain", new { amountSlain, amountNeeded, monsterName });
 
         public Translation Bats => translator.Get("monster.bats");
         public Translation CaveInsects => translator.Get("monster.cave-insects");
